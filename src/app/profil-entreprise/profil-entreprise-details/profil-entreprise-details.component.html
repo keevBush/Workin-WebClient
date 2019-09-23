@@ -1,0 +1,49 @@
+<div>
+  <div class="be-user-block style-3">
+    <div class="be-user-detail">
+      <a class="be-ava-user style-2">
+        <img [src]="authService.CurrentUser.profil" alt="">
+      </a>
+      <button type="button" routerLink="/profil/edit" class="be-ava-right btn color-1 hover-10">
+        <i class="fa fa-edit"></i>Modifier
+      </button>
+      <p class="be-use-name" *ngIf="authService.CurrentUser.nom !== null">{{authService.CurrentUser.nom}}</p>
+      <div class="be-user-info" *ngIf="authService.CurrentUser.adresse !== null">
+        <i class="fa fa-map-marker"></i> {{authService.CurrentUser.adresse}}
+      </div>
+<!--      <div class="row">-->
+<!--        <a href="#" class="btn color-5 mb-2"><i class="fa fa-envelope-o"></i> Télecharger le CV</a>-->
+<!--      </div>-->
+      <div class="be-user-social">
+        <a class="social-btn color-1 mr-1" href="page1.html"><i class="fa fa-facebook"></i></a>
+        <a class="social-btn color-5 mr-1" href="page1.html"><i class="fa fa-twitter"></i></a>
+        <a class="social-btn color-6 mr-1" href="page1.html"><i class="fa fa-linkedin"></i></a>
+      </div>
+      <!--            <a class="be-user-site" href="http://www.phoenix.cool/"><i class="fa fa-link"></i> www.phoenix.cool</a>-->
+    </div>
+    <div class="be-user-statistic">
+      <div class="stat-row clearfix"><i class="stat-icon icon-views-b"></i>Offres<span class="stat-counter">{{propositions.length}}
+      </span></div>
+      <div class="stat-row clearfix"><i class="stat-icon icon-like-b"></i>Publicités<span class="stat-counter">{{publicites.length}}
+      </span></div>
+    </div>
+  </div>
+  <div class="be-desc-block">
+    <div class="be-desc-author">
+      <div class="be-desc-label">A propos de nous</div>
+      <div class="clearfix"></div>
+      <div class="be-desc-text"
+           *ngIf="authService.CurrentUser.APropos !== null">
+        {{authService.CurrentUser.APropos}}
+      </div>
+    </div>
+    <div class="be-desc-author">
+      <div class="be-desc-label">Domaines proffessionnelles</div>
+      <div class="clearfix"></div>
+      <div class="be-desc-text" >
+        <span  *ngFor="let d of authService.CurrentUser.domaines"> {{d}} </span>
+      </div>
+    </div>
+  </div>
+</div>
+

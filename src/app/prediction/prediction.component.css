@@ -1,0 +1,8 @@
+.cont{
+  overflow-y: scroll;
+  height: 690px;
+  margin-bottom: 50px;
+}
+.alert-primary{
+  border-radius: 8px;
+}

@@ -1,0 +1,167 @@
+<div class="container-fluid" style="margin-top: 80px;" >
+    <div class="row">
+      <div class="col-xs-12 col-md-3 ">
+        <div class="be-vidget back-block">
+          <a routerLink="/profil" class="btn full color-1 size-1 hover-1"><i class="fa fa-chevron-left"></i>back to profile</a>
+      </div>
+      </div>
+      <div class="col-xs-12 col-md-8 _editor-content_">
+        <div class="row" *ngIf="isSuccess">
+          <div class="container text-center pt-2 mb-3 pb-2 alert-success">
+            {{successMessage}}
+          </div>
+        </div>
+        <div class="row" *ngIf="isError">
+          <div class="container text-center pt-2 mb-3 pb-2 alert-danger">
+            {{errorMessage}}
+          </div>
+        </div>
+        <div class="sec"  data-sec="basic-information">
+          <div class="be-large-post">
+            <div class="info-block style-2">
+              <div class="be-large-post-align "><h3 class="info-block-label">Basic Information</h3></div>
+            </div>
+            <div class="be-large-post-align">
+              <div class="row">
+
+                <a class="be-ava-user style-2" >
+                  <img  [src]="img" alt="">
+                </a>
+                <div class=" ml-5 d-flex h-100">
+                  <div class="row  ">
+                    <input (change)="uploadFile(file.files)" type="file" #file accept="image/jpeg,image/x-png" class="btn color-1 size-2 hover-1">
+                  </div>
+                </div>
+                <div class="spinner" *ngIf="isLoading">
+                 <span *ngIf="process > 0"> {{process}} % </span>
+                  <p class="circle">
+                      <span class="ouro">
+                        <span class="left"><span class="anim"></span></span>
+                        <span class="right"><span class="anim"></span></span>
+                      </span>
+                  </p>
+                </div>
+
+              </div>
+
+              <div class="container">
+                <div class="row">
+                  <div class="input-col col-xs-12 col-sm-6">
+                    <div class="form-group fg_icon focus-2">
+                      <div class="form-label">Nom de l'entreprise</div>
+                      <input [(ngModel)]="employeurIdentite.nom" [ngModelOptions]="{standalone: true}" class="form-input" type="text" >
+                    </div>
+                  </div>
+                  <div class="input-col col-xs-12 col-sm-6">
+                    <div class="form-group focus-2">
+                      <div class="form-label">Adresse de l'entreprise</div>
+                      <input class="form-input" type="text" [(ngModel)]="employeurIdentite.adresse" [ngModelOptions]="{standalone: true}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-col col-xs-12 col-sm-12">
+                    <div class="form-group fg_icon focus-2">
+                      <div class="form-label">Identifiant national de l'entreprise</div>
+                      <input class="form-input" type="text" [(ngModel)]="employeurIdentite.idNational" [ngModelOptions]="{standalone: true}">
+                    </div>
+                  </div>
+                  <a class="btn color-1 size-2 hover-1" (click)="updateFirstInfo()">Sauvegarder</a>
+                </div>
+                <div class="row">
+                  <div class="spinner" *ngIf="isLoading3">
+                    <p class="circle">
+                      <span class="ouro">
+                        <span class="left"><span class="anim"></span></span>
+                        <span class="right"><span class="anim"></span></span>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="be-large-post-align">
+            </div>
+          </div>
+        </div>
+        <div class="sec"  data-sec="edit-password">
+          <div class="be-large-post">
+            <div class="info-block style-2">
+              <div class="be-large-post-align"><h3 class="info-block-label">Password</h3></div>
+            </div>
+            <div class="be-large-post-align">
+              <div class="row">
+                <div class="input-col col-xs-12 col-sm-4">
+                  <div class="form-group focus-2">
+                    <div class="form-label">Old Password</div>
+                    <input [(ngModel)]="password1" [ngModelOptions]="{standalone: true}" class="form-input" type="password" placeholder="">
+                  </div>
+                </div>
+                <div class="input-col col-xs-12 col-sm-4">
+                  <div class="form-group focus-2">
+                    <div class="form-label">New Password</div>
+                    <input [(ngModel)]="password2" [ngModelOptions]="{standalone: true}" class="form-input" type="password" placeholder="">
+                  </div>
+                </div>
+                <div class="input-col col-xs-12 col-sm-4">
+                  <div class="form-group focus-2">
+                    <div class="form-label">Repeat Password</div>
+                    <input [(ngModel)]="passwordConfirm" [ngModelOptions]="{standalone: true}" class="form-input" type="password" placeholder="">
+                  </div>
+                </div>
+
+
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <a class="btn color-1 size-2 hover-1" (click)="updateSecondInfo()">Sauvegarder</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="sec"  data-sec="about-me" >
+          <div class="be-large-post">
+            <div class="info-block style-2">
+              <div class="be-large-post-align"><h3 class="info-block-label">A propos de nous</h3></div>
+            </div>
+            <div class="be-large-post-align">
+              <div class="row">
+                <div class="container">
+                  <div class="input-col col-xs-12 ">
+                    <div class="form-group focus-2">
+                      <div class="form-label">Domaines</div>
+                      <input [(ngModel)]="domainesString"  [ngModelOptions]="{standalone: true}" class="form-input" type="text" placeholder="">
+                    </div>
+                  </div>
+                  <div class="input-col col-xs-12">
+                    <div class="form-group focus-2">
+                      <textarea [(ngModel)]="employeurIdentite.APropos" [ngModelOptions]="{standalone: true}" class="form-input" required="" placeholder="Something about you"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <a (click)="updateThirdInfo()"  class="btn color-1 size-2 hover-1" >Sauvegarder</a>
+                </div>
+                <div class="container" *ngIf="isLoading3">
+                  <div class="spinner">
+                    <p class="circle">
+                      <span class="ouro">
+                        <span class="left"><span class="anim"></span></span>
+                        <span class="right"><span class="anim"></span></span>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
