@@ -20,8 +20,8 @@ export class AcceuilDetailsFiltersComponent implements OnInit {
     for ( let i = 0 ; i < 10 ; i++) {
       const p = new Proposition();
       p.id = `key${i}`;
-      p.employeurIdentite = new EmployeurIdentite();
-      p.employeurIdentite.nom = `Entreprise ${i}`;
+      p.employeur = new EmployeurIdentite();
+      p.employeur.nom = `Entreprise ${i}`;
       p.demandeursInteressees = new Array<DemandeurIdentite>();
       const o = new Offre();
       o.id = `key${i}`;

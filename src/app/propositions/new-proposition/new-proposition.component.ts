@@ -4,6 +4,8 @@ import {AuthService} from '../../services/auth/auth.service';
 import {Offre} from '../../models/structures/offre';
 import * as uuid from 'uuid';
 import {EmployeurServiceService} from '../../services/employeur-service.service';
+import {TypeOffre} from '../../models/structures/type-offre.enum';
+import {Proposition} from '../../models/structures/proposition';
 
 @Component({
   selector: 'app-new-proposition',
@@ -29,6 +31,16 @@ export class NewPropositionComponent implements OnInit {
       }
       this.offre.details = this.editorContent.data;
       console.log(this.offre);
+      this.offre.typeOffre = TypeOffre.Public;
+      if (this.isInternational) {
+        this.offre.pays = null;
+        this.offre.ville = null;
+      }
+      let proposition = new Proposition();
+      proposition.id = this.offre.id;
+      proposition.offre = this.offre;
+      proposition.employeur = this.authService.CurrentUser;
+      proposition.demandeursInteressees = [];
       this.employeurService.newProposition(this.offre).subscribe((data) => {
         console.log(data);
         this.isLoading = false;
