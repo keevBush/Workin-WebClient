@@ -1,0 +1,78 @@
+<div class="container-fluid cont2" style="margin-top: 70px">
+<form class="row">
+  <div class="input-col col-xs-12 col-sm-4">
+    <div class="form-group focus-2">
+      <div class="form-label">Nom du poste</div>
+      <input [(ngModel)]="offre.nomPoste" [ngModelOptions]="{standalone: true}" class="form-input" type="text" placeholder="">
+    </div>
+  </div>
+  <div class="input-col col-xs-12 col-sm-4">
+    <div class="form-group focus-2">
+      <div class="form-label">Deadline</div>
+      <input [(ngModel)]="offre.deadline" [ngModelOptions]="{standalone: true}" class="form-input" type="date" placeholder="">
+    </div>
+  </div>
+  <div class="input-col col-xs-12 col-sm-4">
+    <div class="form-group focus-2">
+      <div class="form-label">Nombre maximum de candidats</div>
+      <input [(ngModel)]="offre.maxParticipant" [ngModelOptions]="{standalone: true}" class="form-input" type="number" min="1" placeholder="">
+    </div>
+  </div>
+  <div *ngIf="isInternational === false"  class="input-col col-xs-12 col-sm-4">
+    <div class="form-group focus-2">
+      <div class="form-label">Ville</div>
+      <input [(ngModel)]="offre.ville" [ngModelOptions]="{standalone: true}" class="form-input" type="text" min="1" placeholder="">
+    </div>
+  </div>
+  <div *ngIf="isInternational === false" class="input-col col-xs-12 col-sm-4">
+    <div class="form-group focus-2">
+      <div class="form-label">Pays</div>
+      <input [(ngModel)]="offre.pays" [ngModelOptions]="{standalone: true}" class="form-input" type="text" min="1" placeholder="">
+    </div>
+  </div>
+  <div class="input-col col-xs-12 col-sm-4">
+    <div class="form-group focus-2">
+      <div  class="form-label">Proposition international</div>
+      <input [(ngModel)]="isInternational" [ngModelOptions]="{standalone: true}" type="checkbox" placeholder="">
+    </div>
+  </div>
+  <div class="input-col col-xs-12 col-sm-12">
+    <div class="form-group focus-2">
+      <div class="form-label">Donnez les details la proposition</div>
+      <ckeditor  [(ngModel)]="editorContent.data" [editor]="Editor" [ngModelOptions]="{standalone: true}" ></ckeditor>
+    </div>
+  </div>
+  <div class="input-col col-xs-12 col-sm-12">
+    <div class="form-group focus-2">
+      <div class="form-label">Décrire la proposition</div>
+      <textarea class="form-input " [(ngModel)]="offre.description"  [ngModelOptions]="{standalone: true}" ></textarea>
+    </div>
+  </div>
+  <!-- Nouvelle proposition -->
+  <div class="col-xs-12 col-sm-12">
+    <div class="row">
+      <div class="input-col container-fluid">
+        <div class="form-group focus-2">
+          <div class="form-label">Lister les compétences recherchés séparé d'une virgule</div>
+          <input class="form-input col-sm-12" [(ngModel)]="competances" [ngModelOptions]="{standalone: true}" type="text" placeholder="Ex. Angular, ASP">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12" >
+    <div class="right" >
+      <a class="btn color-1 size-2 hover-1" (click)="onSubmit()" >Poster cette proposition</a>
+    </div>
+  </div>
+  <div class="container" *ngIf="isLoading">
+    <div class="spinner">
+      <p class="circle">
+        <span class="ouro">
+          <span class="left"><span class="anim"></span></span>
+          <span class="right"><span class="anim"></span></span>
+        </span>
+      </p>
+    </div>
+  </div>
+</form>
+</div>

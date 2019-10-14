@@ -1,0 +1,49 @@
+<div id="content-block">
+  <div class="container be-detail-container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-5 left-feild">
+        <a href="author-login.html" class="btn color-4 size-1 hover-7"><i class="fa fa-chevron-left"></i> Composer un nouveau message</a>
+        <form>
+          <div class="noto-header clearfix">
+            <div class="form-checkbox">
+              <input id="ch1" class="select-all" type="checkbox"> <span class="check"><i class="fa fa-check"></i></span>
+              <label for="ch1">select all</label>
+            </div>
+            <div class="stat-sort be-drop-down">
+              <span class="be-dropdown-content">actions</span>
+              <ul class="drop-down-list">
+                <li><a>Featured</a></li>
+                <li><a>Most Appreciated</a></li>
+                <li><a>Most Viewed</a></li>
+                <li><a>Most Discussed</a></li>
+                <li><a>Most Recent</a></li>
+                <li><a>Edit</a></li>
+                <li><a>Delete</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="noto-entry style-3" *ngFor="let i of [1,7,8,9]">
+            <div class="noto-content clearfix">
+              <div class="form-checkbox">
+                <input type="checkbox" value=""> <span class="check"><i class="fa fa-check"></i></span>
+              </div>
+              <div class="noto-img">
+                <a href="page1.html">
+                  <img src="assets/img/c1.png" alt="" class="be-ava-comment">
+                </a>
+              </div>
+              <div class="noto-text">
+                <div class="noto-text-top">
+                  <span class="noto-name"><a href="page1.html">Ravi Sah</a></span>
+                  <span class="noto-date"><i class="fa fa-clock-o"></i> May 27, 2015</span>
+                </div>
+                <div class="noto-message">Sed velit mauris, pulvinar sit amet accumsan vitae, egestas, pulvinar sit amet accumsan vitae, egestas</div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <app-messagerie-conversation class="col-xs-12 col-sm-7"></app-messagerie-conversation>
+    </div>
+  </div>
+</div>

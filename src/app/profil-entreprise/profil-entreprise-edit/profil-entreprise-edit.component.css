@@ -1,0 +1,5 @@
+.container-fluid{
+  overflow-y: scroll;
+  height: 600px;
+  margin-bottom: 50px;
+}

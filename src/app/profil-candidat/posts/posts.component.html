@@ -1,0 +1,113 @@
+<div class="content-block" style="margin-top: 50px">
+  <div class="container custom-container be-detail-container">
+    <div class="row">
+      <div class="col-md-9 col-md-push-3">
+        <div class="be-large-post">
+          <div class="info-block">
+            <div class="be-large-post-align">
+              <span><i class="fa fa-thumbs-o-up"></i> {{likes.length}}</span>
+              <span><i class="fa fa-comment-o"></i> {{comments.length}}</span>
+            </div>
+          </div>
+          <div class="blog-content  be-large-post-align">
+            <div class="clear"></div>
+            <div class="post-text">
+              <div class="be-large-post-slider type-wide">
+                <div class="swiper-container thumbnails-preview" >
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngIf="data !=null" data-val="0">
+                      <img *ngIf="typePublication == 0" class="img-responsive img-full" src="{{data}}" alt="">
+
+                    </div>
+                    <blockquote style="margin-left: 0px; margin-right: 0px;" *ngIf="typePublication === 1">
+                      <p>{{data}}</p>
+                      <!--              <footer><cite title="Kalen mcGregor">Hoang Nguyen</cite></footer>-->
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+              <p *ngIf="legende != null">{{legende}}</p>
+            </div>
+
+          </div>
+          <div class="be-large-post-align">
+            <h3 class="letf-menu-article">
+              Tags
+            </h3>
+            <div class="tags_block clearfix">
+              <ul>
+                <li *ngFor="let t of tags"><a>{{t}}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="be-comment-block">
+          <h1 class="comments-title">Nouveau commentaire</h1>
+          <h1 class="comments-title" *ngIf="comments.length === 0" style="color: #888888">Soyez le premier à donner votre avis </h1>
+          <form class="form-block" >
+            <div >
+              <div class="form-group">
+                <textarea [(ngModel)]="currentComment" [ngModelOptions]="{standalone: true}" class="form-input" required="" placeholder="Your text"></textarea>
+              </div>
+              <input type="button" (click)="commenter()" class="btn color-1 size-2 hover-1 pull-right" value="Commenter">
+            </div>
+          </form>
+        </div>
+        <div class="be-comment-block">
+          <h1 class="comments-title">Commentaires ({{comments.length}})</h1>
+
+          <div class="be-comment" *ngFor="let c of comments">
+            <div class="be-img-comment">
+              <a href="blog-detail-2.html">
+                <img src="assets/img/c1.png" alt="" class="be-ava-comment">
+              </a>
+            </div>
+            <div class="be-comment-content">
+              <span class="be-comment-name">
+                <a href="blog-detail-2.html">{{c.employeur.nom}}</a>
+              </span>
+              <span class="be-comment-time">
+                <i class="fa fa-clock-o"></i>
+                {{c.commentaire.date | timeAgo}}
+              </span>
+
+              <p class="be-comment-text">
+                {{c.commentaire.value}}
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-3 col-md-pull-9 left-feild">
+        <div class="be-user-block">
+          <div class="be-user-detail">
+            <a class="be-ava-user" href="blog-detail-2.html">
+              <img src="assets/img/ava.png" alt="">
+            </a>
+            <p class="be-use-name">{{candidat.username}}</p>
+            <span class="be-user-info">
+              {{candidat.localisation}}
+            </span>
+          </div>
+          <div class="be-user-activity-block">
+            <div class="row">
+              <div class="col-lg-12">
+                <a routerLink="/candidat/{{idCandidat}}" class="be-user-activity-button be-follow-type text-center"><i class="fa fa-user"></i>VOIR LE PROFIL</a>
+              </div>
+            </div>
+          </div>
+          <h5 class="be-title">
+            About me
+          </h5>
+          <p class="be-text-userblock">
+            {{candidat.aPropos}}
+          </p>
+        </div>
+        <a (click)="like()" *ngIf="!isLiked" class="be-user-activity-button be-follow-type text-center"><i class="fa fa-thumbs-o-up"></i>AIMER</a>
+        <a (click)="like()" *ngIf="isLiked" class="be-user-activity-button be-follow-type text-center"><i class="fa fa-thumbs-o-up"></i>JE N'AIME PLUS</a>
+      </div>
+    </div>
+  </div>
+</div>
